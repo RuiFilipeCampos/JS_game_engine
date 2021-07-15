@@ -22,8 +22,40 @@ class Object {
 	*/
 
 	constructor(x, y){
+
 		this.x = x;
 		this.y = y;
+
+		document.addEventListener("keydown", (event) => {
+			var key = event.key
+
+				if (key == 'ArrowRight') {
+					this.apagar(context)
+					this.deslocar(delta, 0)
+					this.desenhar(context)
+				}
+
+				if (key == 'ArrowLeft') {
+					this.apagar(context)
+					this.deslocar(-delta, 0)
+					this.desenhar(context)
+				}
+
+				if (key == 'ArrowUp') {
+					this.apagar(context)
+					this.deslocar(0, -delta)
+					this.desenhar(context)
+				}
+
+				if (key == "ArrowDown") {
+					this.apagar(context)
+					this.deslocar(0, delta)
+					this.desenhar(context)
+
+				}
+		})
+
+
 	}
 
 	deslocar(dx, dy){
@@ -34,8 +66,12 @@ class Object {
 
 	apagar(context){
 		context.fillStyle = "white"
-		for (var yi = this.pos.y; yi <= this.pos.y + this.param.y ; yi++){
-			for (var xi = this.pos.x; xi <= this.pos.x + this.param.x; xi++){
+
+		var max_y = this.y + this.h;
+		var max_x = this.x + this.l;
+
+		for (var yi = this.y; yi <= max_y ; yi++){
+			for (var xi = this.x; xi <= max_x; xi++){
 				context.fillRect(xi, yi, 1, 1)	
 			}
 		}
@@ -56,8 +92,8 @@ class Retangulo extends Object{
 
 		context.fillStyle = "black"
 
-		max_y = this.y + this.h;
-		max_x = this.x + this.l;
+		var max_y = this.y + this.h;
+		var max_x = this.x + this.l;
 
 		for (var yi = this.y; yi <= max_y ; ++yi){
 			for (var xi = this.x; xi <= max_x; ++xi){
@@ -89,7 +125,7 @@ class Circulo extends Object{
 
 
 
-
+/*
 		var max = 500
 
 		for (var yi = this.pos.y; yi <= this.pos.y + max ; yi++ ){
@@ -98,7 +134,7 @@ class Circulo extends Object{
 				
 			}
 		}
-
+*/
 	}
 }
 
@@ -124,33 +160,5 @@ ret.desenhar(context)
 
 
 
-document.addEventListener("keydown", (event) => {
-	var key = event.key
 
-		if (key == 'ArrowRight') {
-			ret.apagar(context)
-			ret.deslocar(delta, 0)
-			ret.desenhar(context)
-		}
-
-		if (key == 'ArrowLeft') {
-			ret.apagar(context)
-			ret.deslocar(-delta, 0)
-			ret.desenhar(context)
-		}
-
-		if (key == 'ArrowUp') {
-			ret.apagar(context)
-			ret.deslocar(0, -delta)
-			ret.desenhar(context)
-		}
-
-		if (key == "ArrowDown") {
-			ret.apagar(context)
-			ret.deslocar(0, delta)
-			ret.desenhar(context)
-
-
-		}
-})
 
