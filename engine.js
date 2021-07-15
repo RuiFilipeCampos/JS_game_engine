@@ -16,67 +16,85 @@ class Vetor {
 }
 
 
+class Object {
+	/*
+	Base class for objects.
+	*/
 
-
-
-class Retangulo {
-
-	constructor(x, y, comprimento, altura){
-		this.pos   = new Vetor(x, y)
-		this.param = new Vetor(comprimento, altura)
+	constructor(x, y){
+		this.x = x;
+		this.y = y;
 	}
 
-	deslocar(dx, dy){ 
-		this.pos.add(dx, dy)
+	deslocar(dx, dy){
+		this.x += dx;
+		this.y += dy;
+	}
+
+
+	apagar(context){
+		context.fillStyle = "white"
+		for (var yi = this.pos.y; yi <= this.pos.y + this.param.y ; yi++){
+			for (var xi = this.pos.x; xi <= this.pos.x + this.param.x; xi++){
+				context.fillRect(xi, yi, 1, 1)	
+			}
+		}
+	}
+
+}
+
+
+class Retangulo extends Object{
+
+	constructor(x, y, comprimento, altura){
+		super(x, y);
+		this.h = altura;
+		this.l = comprimento;
 	}
 
 	desenhar(context){
+
 		context.fillStyle = "black"
-		for (var yi = this.pos.y; yi <= this.pos.y + this.param.y ; yi++){
-			for (var xi = this.pos.x; xi <= this.pos.x + this.param.x; xi++){
-				context.fillRect(xi, yi, 1, 1)	
+
+		max_y = this.y + this.h;
+		max_x = this.x + this.l;
+
+		for (var yi = this.y; yi <= max_y ; ++yi){
+			for (var xi = this.x; xi <= max_x; ++xi){
+				context.fillRect(xi, yi, 1, 1);
 			}
 		}
 	}
 
-	apagar(context){
-
-		context.fillStyle = "white"
-
-		for (var yi = this.pos.y; yi <= this.pos.y + this.param.y ; yi++){
-			for (var xi = this.pos.x; xi <= this.pos.x + this.param.x; xi++){
-				context.fillRect(xi, yi, 1, 1)	
-			}
-		}
-
-
-
-	}
 }
 
 
 
-class Circulo {
+class Circulo extends Object{
 	constructor(x, y, raio){
-		this.pos   = new Vetor(x, y)
-
-
-		this.raio = raio
+		super(x, y);
+		this.raio = raio;
 	}
 
-	deslocar(dx, dy){
-		this.pos.add(dx, dy)
-	}
 
 	desenhar(context){
+
+		for (var yi = this.y; yi <= max_y ; ++yi){
+			for (var xi = this.x; xi <= max_x; ++xi){
+				if ((this.pos.x - xi)**2 + (this.pos.y - yi)**2 < this.raio**2) {
+					context.fillRect(xi, yi, 1, 1);
+				}
+			}
+		}
+
+
+
 
 		var max = 500
 
 		for (var yi = this.pos.y; yi <= this.pos.y + max ; yi++ ){
 			for (var xi = this.pos.x; xi <= this.pos.x + max; xi++){
-				if ((this.pos.x - xi)**2 + (this.pos.y - yi)**2 < this.raio**2) {
-					context.fillRect(xi, yi, 1, 1)
-				}
+
 				
 			}
 		}
