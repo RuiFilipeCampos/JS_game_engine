@@ -28,26 +28,23 @@ class Object {
 	}
 
 
-	apagar(context){
-		context.fillStyle = "white"
-
-		var max_y = this.y + this.h;
-		var max_x = this.x + this.l;
-
-		for (var yi = this.y; yi <= max_y ; yi++){
-			for (var xi = this.x; xi <= max_x; xi++){
-				context.fillRect(xi, yi, 1, 1)	
-			}
-		}
-	}
-
 }
 
+var LOCKED = false; 
 
-class Player extends Object{
+export class Player extends Object{
+	// this shoud be unique 
+
+	constructor(){
 
 
-	constructor(x, y){
+	  	if (LOCKED){
+			  throw Error("There can only be one playaaa")
+		}
+
+		LOCKED = true; 
+		
+		
 
 		document.addEventListener("keydown", (event) => {
 			var key = event.key
@@ -82,6 +79,15 @@ class Player extends Object{
 	}
 
 }
+
+
+
+export class FixedObject extends Object{
+	move(dt){
+		// overriding toplevel move, this guy is fixed 
+	}
+}
+
 
 
 

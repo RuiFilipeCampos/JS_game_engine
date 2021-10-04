@@ -2,16 +2,17 @@
 
 
 
-export class Universe{ 
+export class Universe { 
     // Global stuff
     
     constructor(){
         this.container = {};
-        this.canvas = false; 
+        this.canvas = document.getElementById("CANVAS");
+        this.context = canvas.getContext('2d');
     }; 
 
     add_gravity(strenght){
-        this.g = -strenght
+        this.g = -strenght;
     }
 
     add_object(){
