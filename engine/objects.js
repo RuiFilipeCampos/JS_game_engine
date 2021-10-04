@@ -92,7 +92,7 @@ export class FixedObject extends Object{
 
 
 
-class Retangulo extends Object{
+class Retangulo extends FixedObject{
 
 	constructor(x, y, comprimento, altura){
 		super(x, y);
