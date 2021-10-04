@@ -30,20 +30,12 @@ class Object {
 
 }
 
-var LOCKED = false; 
 
 export class Player extends Object{
 	// this shoud be unique 
 
 	constructor(){
 
-
-	  	if (LOCKED){
-			  throw Error("There can only be one playaaa")
-		}
-
-		LOCKED = true; 
-		
 		
 
 		document.addEventListener("keydown", (event) => {
