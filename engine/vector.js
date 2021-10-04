@@ -2,12 +2,12 @@
 
 
 
-class Vector{
+export class Vector{
     // 2d vectors
 
     constructor(x, y){
         this.x = x
-        this.y = y«
+        this.y = y
     };
 
     add(other){

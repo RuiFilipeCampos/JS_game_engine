@@ -1,33 +1,57 @@
 
 
-class Vetor {
-	constructor(x, y){
-		this.x = x
-		this.y = y
-	}
-
-
-	add(dx, dy){
-		this.x += dx
-		this.y += dy
-	}
-
-
-}
-
+import {Vector} from "vector.js"
 
 class Object {
 	/*
 	Base class for objects.
 	*/
 
-	constructor(x, y){
+	constructor(x, y, vx, vy, ax, ay){
 
-		this.x = x;
-		this.y = y;
+		//kinematic type stuff
+		this.pos = new Vector(x, y)
+		this.vel = new Vector(vx, vy)
+		this.accel = new Vector(ax, ay)
+	}
+
+	move(dt){
+		// lots of allocations, I dont like this
+
+		this.vel.add_inplace(
+			this.accel.multiply(dt)
+		)
+
+		this.pos.add_inplace(
+			this.vel.multiply(dt)
+		)
+	}
+
+
+	apagar(context){
+		context.fillStyle = "white"
+
+		var max_y = this.y + this.h;
+		var max_x = this.x + this.l;
+
+		for (var yi = this.y; yi <= max_y ; yi++){
+			for (var xi = this.x; xi <= max_x; xi++){
+				context.fillRect(xi, yi, 1, 1)	
+			}
+		}
+	}
+
+}
+
+
+class Player extends Object{
+
+
+	constructor(x, y){
 
 		document.addEventListener("keydown", (event) => {
 			var key = event.key
+
 
 				if (key == 'ArrowRight') {
 					this.apagar(context)
@@ -55,29 +79,11 @@ class Object {
 				}
 		})
 
-
-	}
-
-	deslocar(dx, dy){
-		this.x += dx;
-		this.y += dy;
-	}
-
-
-	apagar(context){
-		context.fillStyle = "white"
-
-		var max_y = this.y + this.h;
-		var max_x = this.x + this.l;
-
-		for (var yi = this.y; yi <= max_y ; yi++){
-			for (var xi = this.x; xi <= max_x; xi++){
-				context.fillRect(xi, yi, 1, 1)	
-			}
-		}
 	}
 
 }
+
+
 
 
 class Retangulo extends Object{
