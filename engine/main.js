@@ -15,7 +15,16 @@ export class Universe {
         this.g = -strenght;
     }
 
-    add_object(){
+    add_object(object){
+
+        switch (object.type) {
+            case value:
+                
+                break;
+        
+            default:
+                break;
+        }
         // gotta specify lots of stuff here
 
     }
