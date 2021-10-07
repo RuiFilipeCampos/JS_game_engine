@@ -1,6 +1,6 @@
 # JS_game_engine
 
-NEEDS RETHINKING
+- [ ] NEEDS RETHINKING
 
 
 I want a `Universe` class to serve as interface to the programmer.
