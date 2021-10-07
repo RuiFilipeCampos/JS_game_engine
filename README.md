@@ -16,12 +16,17 @@ class Object{
 }
 
 
-class Agent extends Object {} // agents do stuff ! 
-class Player extends Agent {} // there can be only one, this guy is a Singleton
-class NPC extends Agent {} // enimies and stuff like that
+
 
 class StaticObject extends Object {} // fixed objects like the floor, they move in the oppposite direction of the player
 class DynamicObject extends Object {} // has velocity, suffers accelaration stuff like that
+
+class Agent extends DynamicObject {} // agents do stuff ! 
+class Player extends Agent {} // there can be only one, this guy is a Singleton
+class NPC extends Agent {} // enimies and stuff like that
+
+class Projectile extends DynamicObject {} // idk lol
+
 
 ```
 
