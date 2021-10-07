@@ -25,4 +25,6 @@ class DynamicObject extends Object {} // has velocity, suffers accelaration stuf
 
 ```
 
--[ ] can I has multiple inheritence stuff ??? 
+-[x] can I has multiple inheritence stuff ???
+   - NOPE:
+> JavaScript does not support multiple inheritance. Inheritance of property values occurs at run time by JavaScript searching the prototype chain of an object to find a value. Because an object has a single associated prototype, JavaScript cannot dynamically inherit from more than one prototype chain.
