@@ -1,3 +1,5 @@
+This thing does not have anything, it's only here because I know it's going to be one of my favorites once I get around to it.
+
 # JS_game_engine
 
 - [ ] NEEDS RETHINKING
